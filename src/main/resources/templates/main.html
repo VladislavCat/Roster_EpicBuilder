@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Army builder</title>
+    <meta charset="utf-8">
+    <link rel="icon" th:href="@{/icons/skull-01.svg}" type="image/x-icon"/>
+    <link rel="shortcut icon" th:href="@{/icons/skull-01.svg}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/styles/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+    <div class="left">
+        <div class="leftHead">
+            <h1>EpicHammer</h1>
+            <hr>
+        </div>
+        <footer>Этот веб-сайт является неофициальным и никоим образом не поддерживается Games Workshop Limited.</footer>
+    </div>
+
+    <form name="form" class="right">
+        <header>
+            <h1>Космодесант</h1>
+        </header>
+        <div class="calc">
+            <div class="item input">
+                <div class="points">
+                    <fieldset style="display: none">
+                        <legend>План</legend>
+                        <input type="text" name="wantier" placeholder="0">
+                    </fieldset>
+                    <fieldset>
+                        <legend>Расчетная стоимость</legend>
+                        <input type="text" name="textview" readonly value="0">
+                    </fieldset>
+                    <fieldset>
+                        <legend>Доступно поддержки</legend>
+                        <input type="text" name="dops" readonly value="0">
+                    </fieldset>
+                    <fieldset>
+                        <legend>Очков Лордов</legend>
+                        <input type="text" name="lords" readonly value="0">
+                    </fieldset>
+                </div>
+            </div>
+            <div class="item clean" th:onclick="clean('');clean('supportFormationAdd');clean('lordsFormationAdd')" style="cursor: pointer">Обнулить</div>
+            <div class="unit" id="Line">
+                <select>
+                    <option th:each="formation :${formations}" th:if="${formation.type=='Line Formation'}"
+                    th:text="${formation.name}" th:value="${formation.id}"></option>
+                    <button th:onclick="@{addInModel/$formation.id}"></button>
+                </select>
+                <div class="lineFormation"></div>
+                <div class="lineFormationAdd" id="lineFormationAdd">
+                    <div id="yakor" class="panel"></div>
+                </div>
+                <hr>
+            </div>
+            <div class="unit" id="supports">
+                <h2 th:onclick="supportCreate('.supportFormation');">Саппортные формации +</h2>
+                <div class="supportFormation"></div>
+                <div class="supportFormationAdd" id="supportFormationAdd">
+                    <div id="yakorSup" class="panel"></div>
+                </div>
+                <hr>
+            </div>
+            <div class="unit" id="lords">
+                <h2 th:onclick="lordsCreate('.lordsFormation');">Формации Лордов +</h2>
+                <div class="lordsFormation"></div>
+                <div class="lordsFormationAdd" id="lordsFormationAdd">
+                    <div id="yakorLords" class="panel"></div>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </form>
+</form>
+</body>
+
+<script th:src="@{js/add.js}"></script>
+<script th:src="@{js/calc.js}"></script>
+<script th:src="@{js/open.js}"></script>
+</html>

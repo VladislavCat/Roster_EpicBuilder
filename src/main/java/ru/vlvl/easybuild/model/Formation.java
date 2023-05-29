@@ -16,12 +16,19 @@ public class Formation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "formation_id", nullable = false)
     private int id;
-    @ManyToOne
-    @JoinColumn(name = "army_id")
-    private Army army;
     private String name;
     @Column(name = "type_formation")
     private String type;
     @OneToMany(mappedBy = "formation")
     private Set<DetailFormation> detailFormationSet = new java.util.LinkedHashSet<>();
+
+    @Override
+    public String toString() {
+        return "Formation{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + ", type='" + type + '\''
+                + ", detailFormationSet=" + detailFormationSet
+                + '}';
+    }
 }

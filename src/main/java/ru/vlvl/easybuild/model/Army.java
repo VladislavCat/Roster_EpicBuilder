@@ -21,7 +21,19 @@ public class Army {
     private int id;
     @Column(name = "army_name")
     private String name;
-    @OneToMany(mappedBy = "army")
+    @ManyToMany
+    @JoinTable(name="armies_formations",
+                joinColumns = {@JoinColumn(name = "army")},
+            inverseJoinColumns = {@JoinColumn(name = "formation")}
+    )
     private Set<Formation> formations = new java.util.LinkedHashSet<>();
 
+    @Override
+    public String toString() {
+        return "Army{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + ", formations=" + formations
+                + '}';
+    }
 }

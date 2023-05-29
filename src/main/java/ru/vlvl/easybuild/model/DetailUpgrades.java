@@ -1,9 +1,18 @@
 package ru.vlvl.easybuild.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Entity
-@Table
+@Table(name = "upgrade_detail")
 public class DetailUpgrades {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -24,9 +24,9 @@ public class DetailFormation {
     @Column(name = "unit_trait")
     private String trait;
     private int price;
-    private int qty;
-    private int min;
-    private int max;
+    private Integer qty;
+    private Integer min;
+    private Integer max;
     @ManyToOne
     @JoinColumn(name = "id_formation")
     private Formation formation;
@@ -37,4 +37,18 @@ public class DetailFormation {
             inverseJoinColumns = { @JoinColumn(name = "upgrade_id")}
     )
     private Set<Upgrade> upgrades = new java.util.HashSet<>();
+
+    @Override
+    public String toString() {
+        return "DetailFormation{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + ", trait='" + trait + '\''
+                + ", price=" + price
+                + ", qty=" + qty
+                + ", min=" + min
+                + ", max=" + max
+                + ", upgrades=" + upgrades
+                + '}';
+    }
 }

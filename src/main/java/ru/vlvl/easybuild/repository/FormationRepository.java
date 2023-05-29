@@ -22,12 +22,4 @@ public class FormationRepository {
     public List<Formation> findById(int id) {
         return cr.query("from Formation where id = :fId", Formation.class, Map.of("fId", id));
     }
-
-    public static void main(String[] args) {
-        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .configure().build();
-        CrudRepository crudRepository = new CrudRepository(new MetadataSources(registry).buildMetadata().buildSessionFactory());
-        FormationRepository formationRepository = new FormationRepository(crudRepository);
-        formationRepository.findAll().forEach(System.out::println);
-    }
 }

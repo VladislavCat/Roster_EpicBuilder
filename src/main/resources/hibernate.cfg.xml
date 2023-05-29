@@ -15,6 +15,7 @@
         <property name="format_sql">true</property>
         <property name="use_sql_comments">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        
         <mapping class="ru.vlvl.easybuild.model.Army"/>
         <mapping class="ru.vlvl.easybuild.model.Upgrade"/>
         <mapping class="ru.vlvl.easybuild.model.Formation"/>
